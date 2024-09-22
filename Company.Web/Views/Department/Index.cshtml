@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DepartmentDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="btn btn-primary">
+    <a class="text-light text-decoration-none" asp-controller="Department" asp-action="Create">Add Department</a>
+</div>
+@if (Model.Count() > 0)
+{
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(d => d.Code)</th>
+                <th>@Html.DisplayNameFor(d => d.Name)</th>
+                <th>@Html.DisplayNameFor(d => d.CreatedAt)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model)
+            {
+                <tr>
+                    <td>@department.Code</td>
+                    <td>@department.Name</td>
+                    <td>@department.CreatedAt</td>
+                    <partial name="_ActionButtonsPartialView" model="@department.Id" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning fw-bold" role="alert">
+        No Data To Retrive Yet
+    </div>
+}

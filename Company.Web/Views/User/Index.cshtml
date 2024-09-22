@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ApplicationUser>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>All Users</h1>
+<br />
+
+<div class="row justify-content-center align-items-center my-5">
+    <form class="row col-8 offset-2" asp-action="Index">
+        <div class="col-8">
+            <input type="text" class="form-control" name="searchInp" placeholder="Search By Name" />
+        </div>
+        <div class="col-4">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+@if (Model.Count() > 0)
+{
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(d => d.Id)</th>
+                <th>@Html.DisplayNameFor(d => d.UserName)</th>
+                <th>@Html.DisplayNameFor(d => d.Email)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th>@user.Id</th>
+                    <th>@user.UserName</th>
+                    <th>@user.Email</th>
+                    <partial name="_ActionButtonsPartialView" model="@user.Id.ToString()" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning fw-bold" role="alert">
+        No Data To Retrive Yet
+    </div>
+}

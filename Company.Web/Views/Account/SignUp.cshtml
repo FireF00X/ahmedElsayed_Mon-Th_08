@@ -1,0 +1,33 @@
+﻿@model SignUpViewModel
+@{
+    Layout = "~/Views/Shared/_AccountLayOut.cshtml";
+}
+<h1>Sign Up</h1>
+<form asp-action="SignUp" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <input type="text" asp-for="FirstName" placeholder="FirstName" class="form-control">
+    <span asp-validation-for="FirstName"></span>
+    <br>
+    <input type="text" asp-for="LastName" placeholder="lastName" class="form-control">
+    <span asp-validation-for="LastName"></span>
+    <br>
+    <input type="email" asp-for="Email" placeholder="Email" class="form-control">
+    <span asp-validation-for="Email"></span>
+    <br>
+    <input type="password" asp-for="Password" placeholder="Password" class="form-control">
+    <span asp-validation-for="Password"></span>
+    <br>
+    <input type="password" asp-for="ConfirmePassword" placeholder="ConfirmePassword" class="form-control">
+    <span asp-validation-for="ConfirmePassword"></span>
+    <br>
+    <div class="wthree-text">
+        <label class="anim">
+            <input type="checkbox" asp-for="IsAgree">
+            <span>I Agree To The Terms Conditions</span>
+        </label>
+        <div class="clear"></div>
+    </div>
+    <input type="submit" value="SignUp" class="btn btn-secondary">
+</form>
+<p>Do You Have an Account? <a asp-action="Login">Login Now</a></p>

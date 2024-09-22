@@ -1,0 +1,19 @@
+﻿ @model UserUpdateViewModel 
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Update User Data</h1>
+
+<form asp-action="Update">
+    <input asp-for="Id" hidden/>
+    <div class="form-group">
+        <label class="col-form-label" asp-for="UserName"></label>
+        <input type="text" asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <br />
+    <input type="submit" value="Update" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-light">Back To List</a>
+</form> 
